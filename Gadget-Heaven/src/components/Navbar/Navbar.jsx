@@ -5,22 +5,23 @@ import Banner from '../Banner/Banner';
 
 const Navbar = () => {
     const location = useLocation();
+    const isHomePage = location.pathname === '/';
 
     return (
-        <div className="bg-gradient-to-r from-[#9538E2] to-[#7C29B3] m-4 p-4 rounded-xl text-white lg:h-[400px] md:h-[400px]">
+        <div className={`${isHomePage ? 'bg-gradient-to-r from-[#9538E2] to-[#7C29B3]' : 'bg-white shadow-lg'} m-4 p-4 rounded-xl text-white`}>
           
             <div className="navbar">
                 <div className="navbar-start">
                    
-                    <a className="btn btn-ghost text-xl text-white">Gadget Heaven</a>
+                <a className={`btn btn-ghost text-xl ${isHomePage ? 'text-white' : 'text-black'}`}>Gadget Heaven</a>
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
                     
-                    <ul className="menu menu-horizontal p-0 text-white">
+                <ul className={`menu menu-horizontal p-0 ${isHomePage ? 'text-white' : 'text-black'}`}>
                         <li><NavLink to ='/'>Homepage</NavLink></li>
                         <li><a>Statistics</a></li>
-                        <li><a>Dashboard</a></li>
+                        <li><NavLink to ='dashboard'>Dashboard</NavLink></li>
                     </ul>
                 </div>
 

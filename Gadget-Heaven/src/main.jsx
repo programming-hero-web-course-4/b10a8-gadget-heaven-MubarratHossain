@@ -1,4 +1,4 @@
-import { Children, StrictMode } from 'react'
+import {  StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 
@@ -10,6 +10,7 @@ import {
 import Root from './components/Root/Root';
 import ErrorPage from './components/Errorpage/Errorpage';
 import Homepage from './components/Homepage/Homepage';
+import Dashboard from './components/Dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
       path : '/',
       element:<Homepage></Homepage>,
+      },
+      {
+        path:'dashboard',
+        element:<Dashboard></Dashboard>
       }
     ]
   },
