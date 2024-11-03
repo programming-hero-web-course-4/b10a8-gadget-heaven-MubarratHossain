@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Banner from '../Banner/Banner';
 
 
@@ -7,7 +7,7 @@ const Navbar = () => {
     const location = useLocation();
 
     return (
-        <div className="bg-gradient-to-r from-[#9538E2] to-[#7C29B3] m-4 p-4 rounded-xl text-white h-auto ">
+        <div className="bg-gradient-to-r from-[#9538E2] to-[#7C29B3] m-4 p-4 rounded-xl text-white lg:h-[400px] md:h-[400px]">
           
             <div className="navbar">
                 <div className="navbar-start">
@@ -18,7 +18,7 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     
                     <ul className="menu menu-horizontal p-0 text-white">
-                        <li><a>Homepage</a></li>
+                        <li><NavLink to ='/'>Homepage</NavLink></li>
                         <li><a>Statistics</a></li>
                         <li><a>Dashboard</a></li>
                     </ul>
@@ -44,7 +44,7 @@ const Navbar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <li><a>Homepage</a></li>
+                            <li><NavLink to ='/'>Homepage</NavLink></li>
                             <li><a>Statistics</a></li>
                             <li><a>Dashboard</a></li>
                         </ul>
