@@ -7,7 +7,7 @@ const Navbar = () => {
     const location = useLocation();
 
     return (
-        <div className="bg-gradient-to-r from-[#9538E2] to-[#7C29B3] m-4 p-4 rounded-xl text-white h-[500px]">
+        <div className="bg-gradient-to-r from-[#9538E2] to-[#7C29B3] m-4 p-4 rounded-xl text-white h-auto ">
           
             <div className="navbar">
                 <div className="navbar-start">
