@@ -18,7 +18,7 @@ const Banner = () => {
         <img
             src={bannerImage}
             alt="Gadget Accessory"
-            className="mt-6 absolute left-1/2 transform -translate-x-1/2 -translate-y-8 w-1/2 rounded-2xl border-4 border-white ring-2 ring-[#9538E2] transition-all duration-300 ease-in-out hover:ring-4"
+            className="mt-6  flex flex-grow absolute left-1/2 transform -translate-x-1/2 -translate-y-8 w-1/2 rounded-2xl border-4 border-white ring-2 ring-[#9538E2] transition-all duration-300 ease-in-out hover:ring-4"
         />
     </div>
     
