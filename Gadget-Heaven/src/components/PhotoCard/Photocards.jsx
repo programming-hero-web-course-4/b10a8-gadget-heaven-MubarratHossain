@@ -5,7 +5,7 @@ const Photocards = ({ item }) => {
     const navigate = useNavigate();
 
     const handleViewDetails = () => {
-        navigate(`/product/${item?.product_id}`); // Navigate to Fulldetails with product_id
+        navigate(`/product/${item?.product_id}`); 
     };
 
     return (

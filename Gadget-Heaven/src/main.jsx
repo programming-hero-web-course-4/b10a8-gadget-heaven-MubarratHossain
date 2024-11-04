@@ -13,6 +13,7 @@ import Homepage from './components/Homepage/Homepage';
 import Dashboard from './components/Dashboard/Dashboard';
 
 import Fulldetails from './components/Fulldetails/Fulldetails';
+import CartProvider from './components/CartProvider/CartProvider';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   </StrictMode>,
 )
