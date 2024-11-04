@@ -12,6 +12,8 @@ import ErrorPage from './components/Errorpage/Errorpage';
 import Homepage from './components/Homepage/Homepage';
 import Dashboard from './components/Dashboard/Dashboard';
 
+import Fulldetails from './components/Fulldetails/Fulldetails';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +23,12 @@ const router = createBrowserRouter([
       {
       path : '/',
       element:<Homepage></Homepage>,
+      },
+      {
+      path:"/product/:id", 
+      element:<Fulldetails></Fulldetails>,
+      loader:() => fetch ('../public/DeviceData.json')
+
       },
       {
         path:'dashboard',

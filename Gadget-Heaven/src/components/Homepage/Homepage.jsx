@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import backgroundImg from './electronic.jpg';
 import Photocard from '../PhotoCard/Photocards';
 
+
 const Homepage = () => {
     const [device, setDevice] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);

@@ -22,7 +22,7 @@
                     "price": 980,
                     "description": "Lightweight and powerful ultrabook with long battery life.",
                     "Specification": ["8GB RAM", "512GB SSD", "Intel i7"],
-                    "availability": true,
+                    "availability": false,
                     "rating": 4.2
                 },
                 {
@@ -109,7 +109,7 @@
                     "price": 80,
                     "description": "Compact fitness tracker with activity monitoring features.",
                     "Specification": ["Sleep Tracking", "Water Resistant"],
-                    "availability": true,
+                    "availability": false,
                     "rating": 4.1
                 }
             ]
