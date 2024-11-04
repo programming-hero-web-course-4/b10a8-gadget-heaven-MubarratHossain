@@ -1,0 +1,172 @@
+{
+    "categories": [
+        {
+            "category_name": "Laptops",
+            "items": [
+                {
+                    "product_id": 1,
+                    "product_title": "Gaming Laptop",
+                    "product_image": "https://i.postimg.cc/bvrSJQVF/laptop.webp",
+                    "category": "Laptops",
+                    "price": 1250,
+                    "description": "High-performance gaming laptop with RGB keyboard and fast graphics.",
+                    "Specification": ["16GB RAM", "1TB SSD", "RTX 3060 GPU"],
+                    "availability": true,
+                    "rating": 4.5
+                },
+                {
+                    "product_id": 2,
+                    "product_title": "Ultrabook",
+                    "product_image": "https://i.postimg.cc/hvLfwMhh/laptop2.jpg",
+                    "category": "Laptops",
+                    "price": 980,
+                    "description": "Lightweight and powerful ultrabook with long battery life.",
+                    "Specification": ["8GB RAM", "512GB SSD", "Intel i7"],
+                    "availability": true,
+                    "rating": 4.2
+                },
+                {
+                    "product_id": 3,
+                    "product_title": "Business Laptop",
+                    "product_image": "https://i.postimg.cc/sXSXQKYK/laptop3.jpg",
+                    "category": "Laptops",
+                    "price": 1100,
+                    "description": "Reliable laptop designed for business needs with enhanced security.",
+                    "Specification": ["16GB RAM", "1TB SSD", "Intel i5"],
+                    "availability": true,
+                    "rating": 4.6
+                }
+            ]
+        },
+        {
+            "category_name": "Phones",
+            "items": [
+                {
+                    "product_id": 4,
+                    "product_title": "Android Flagship",
+                    "product_image": "https://i.postimg.cc/L538vX01/Android.jpg",
+                    "category": "Phones",
+                    "price": 899,
+                    "description": "Flagship Android phone with powerful processor and stunning display.",
+                    "Specification": ["8GB RAM", "128GB Storage", "Triple Camera"],
+                    "availability": true,
+                    "rating": 4.7
+                },
+                {
+                    "product_id": 5,
+                    "product_title": "Budget Android",
+                    "product_image": "https://i.postimg.cc/pTNVH8wj/android1.webp",
+                    "category": "Phones",
+                    "price": 250,
+                    "description": "Affordable Android phone with essential features.",
+                    "Specification": ["4GB RAM", "64GB Storage", "Dual Camera"],
+                    "availability": true,
+                    "rating": 4.0
+                },
+                {
+                    "product_id": 6,
+                    "product_title": "Premium Android",
+                    "product_image": "https://i.postimg.cc/vThGfKc7/android2.webp",
+                    "category": "Phones",
+                    "price": 1050,
+                    "description": "Premium Android device with advanced camera and display.",
+                    "Specification": ["12GB RAM", "256GB Storage", "Quad Camera"],
+                    "availability": true,
+                    "rating": 4.8
+                }
+            ]
+        },
+        {
+            "category_name": "Accessories",
+            "items": [
+                {
+                    "product_id": 7,
+                    "product_title": "Wireless Earbuds",
+                    "product_image": "https://i.postimg.cc/JzGRHPmJ/earbud.webp",
+                    "category": "Accessories",
+                    "price": 120,
+                    "description": "Noise-canceling wireless earbuds with long battery life.",
+                    "Specification": ["Bluetooth 5.0", "6 Hours Playtime"],
+                    "availability": true,
+                    "rating": 4.3
+                },
+                {
+                    "product_id": 8,
+                    "product_title": "Smartwatch",
+                    "product_image": "https://i.postimg.cc/Xv53QqrY/smart.webp",
+                    "category": "Accessories",
+                    "price": 300,
+                    "description": "Smartwatch with fitness tracking and customizable watch faces.",
+                    "Specification": ["Heart Rate Monitor", "GPS", "Water Resistant"],
+                    "availability": true,
+                    "rating": 4.4
+                },
+                {
+                    "product_id": 9,
+                    "product_title": "Fitness Tracker",
+                    "product_image": "https://i.postimg.cc/NM7tvn7h/fitness.webp",
+                    "category": "Accessories",
+                    "price": 80,
+                    "description": "Compact fitness tracker with activity monitoring features.",
+                    "Specification": ["Sleep Tracking", "Water Resistant"],
+                    "availability": true,
+                    "rating": 4.1
+                }
+            ]
+        },
+        {
+            "category_name": "MacBook",
+            "items": [
+                {
+                    "product_id": 10,
+                    "product_title": "MacBook Air M1",
+                    "product_image": "https://i.postimg.cc/vmyBxZGF/macbook.jpg",
+                    "category": "MacBook",
+                    "price": 999,
+                    "description": "MacBook Air with Apple's M1 chip for high performance and efficiency.",
+                    "Specification": ["8GB RAM", "256GB SSD", "13-inch Retina Display"],
+                    "availability": true,
+                    "rating": 4.9
+                },
+                {
+                    "product_id": 11,
+                    "product_title": "MacBook Pro M1",
+                    "product_image": "https://i.postimg.cc/6qF6W9MP/macbook2.jpg",
+                    "category": "MacBook",
+                    "price": 1299,
+                    "description": "MacBook Pro with advanced M1 chip and powerful features.",
+                    "Specification": ["16GB RAM", "512GB SSD", "13-inch Retina Display"],
+                    "availability": true,
+                    "rating": 5.0
+                }
+            ]
+        },
+        {
+            "category_name": "iPhone",
+            "items": [
+                {
+                    "product_id": 12,
+                    "product_title": "iPhone 13 Pro",
+                    "product_image": "https://i.postimg.cc/1zM9g0Ww/i-phone.jpg",
+                    "category": "iPhone",
+                    "price": 999,
+                    "description": "iPhone 13 Pro with A15 Bionic chip and pro camera system.",
+                    "Specification": ["128GB Storage", "Triple Camera", "5G"],
+                    "availability": true,
+                    "rating": 4.8
+                },
+                {
+                    "product_id": 13,
+                    "product_title": "iPhone 14 Pro Max",
+                    "product_image": "https://i.postimg.cc/rmPMjV2p/iphun.jpg",
+                    "category": "iPhone",
+                    "price": 1099,
+                    "description": "iPhone 14 Pro Max with upgraded performance and camera features.",
+                    "Specification": ["256GB Storage", "Triple Camera", "5G"],
+                    "availability": true,
+                    "rating": 5.0
+                }
+            ]
+        }
+    ]
+}

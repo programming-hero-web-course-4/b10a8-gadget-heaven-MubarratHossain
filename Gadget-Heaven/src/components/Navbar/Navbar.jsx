@@ -8,7 +8,7 @@ const Navbar = () => {
     const isHomePage = location.pathname === '/';
 
     return (
-        <div className={`${isHomePage ? 'bg-gradient-to-r from-[#9538E2] to-[#7C29B3]' : 'bg-white shadow-lg'} m-4 p-4 rounded-xl text-white`}>
+        <div className={`${isHomePage ? 'bg-gradient-to-r from-[#9538E2] to-[#7C29B3] min-h-full' : 'bg-white shadow-lg'} m-4 p-4 rounded-xl text-white`}>
           
             <div className="navbar">
                 <div className="navbar-start">
