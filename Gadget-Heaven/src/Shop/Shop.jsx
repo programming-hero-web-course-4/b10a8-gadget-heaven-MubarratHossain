@@ -1,21 +1,62 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { FaShoppingCart, FaStar } from 'react-icons/fa'; 
+import { FaShoppingCart, FaStar } from 'react-icons/fa';
+import { CartContext } from '../components/CartProvider/CartProvider'; 
+import { toast } from 'react-toastify'; 
 
 const Shop = () => {
     const data = useLoaderData();
     const categories = data.categories;
+    const { totalMoney, updateTotalMoney } = useContext(CartContext);
+    const [purchasedItems, setPurchasedItems] = useState({}); 
+    const [purchasedProducts, setPurchasedProducts] = useState([]);
 
-    const handleBuyNow = (productId) => {
+   
+    useEffect(() => {
+        const storedProducts = JSON.parse(localStorage.getItem('purchasedProducts')) || [];
+        const purchasedItemsMap = {};
+        storedProducts.forEach(product => {
+            purchasedItemsMap[product.id] = true;
+        });
+        setPurchasedItems(purchasedItemsMap);
+        setPurchasedProducts(storedProducts);
+    }, []);
+
+    const handleBuyNow = (item) => {
+        if (purchasedItems[item.product_id]) {
+            toast.warning(`You have already purchased ${item.product_title}!`);
+            return;
+        }
+
+        if (totalMoney < item.price) {
+            toast.error("Insufficient funds to buy this item!"); 
+            return;
+        }
+
         
-        localStorage.setItem('selectedProductId', productId);
+        setPurchasedItems(prev => ({
+            ...prev,
+            [item.product_id]: true, 
+        }));
+
         
-        alert(`Product with ID: ${productId} has been added to your cart!`);
+        updateTotalMoney(item.price); 
+        
+        
+        const newPurchasedProduct = { id: item.product_id, name: item.product_title };
+        const updatedProducts = [...purchasedProducts, newPurchasedProduct];
+        setPurchasedProducts(updatedProducts);
+        localStorage.setItem('purchasedProducts', JSON.stringify(updatedProducts));
+
+        toast.success(`Successfully bought ${item.product_title}!`); 
     };
 
     return (
         <div className="p-6 max-w-7xl mx-auto">
             <h3 className="text-3xl font-bold mb-4 text-center">Shop List</h3>
+            <h3 className="text-xl font-semibold mb-4 text-center">
+                Total Money: ${totalMoney.toFixed(2)} 
+            </h3>
 
             {categories.map((category) => (
                 <div key={category.category_name} className="mb-6">
@@ -39,11 +80,12 @@ const Shop = () => {
                                     {item.rating} 
                                 </p>
                                 <button 
-                                    className="mt-4 w-full px-4 py-2 bg-[#9538E2] text-white rounded-full hover:bg-[#7a28a5] transition duration-300 flex items-center justify-center"
-                                    onClick={() => handleBuyNow(item.product_id)} 
+                                    className={`mt-4 w-full px-4 py-2 ${purchasedItems[item.product_id] ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#9538E2]'} text-white rounded-full hover:bg-[#7a28a5] transition duration-300 flex items-center justify-center`}
+                                    onClick={() => handleBuyNow(item)} 
+                                    disabled={purchasedItems[item.product_id]} 
                                 >
                                     <FaShoppingCart className="mr-2" /> 
-                                    Buy Now
+                                    {purchasedItems[item.product_id] ? 'Purchased' : 'Buy Now'}
                                 </button>
                             </div>
                         ))}
@@ -55,6 +97,3 @@ const Shop = () => {
 };
 
 export default Shop;
-
-
-

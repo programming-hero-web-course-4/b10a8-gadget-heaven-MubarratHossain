@@ -6,7 +6,7 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
     const [wishlistItems, setWishlistItems] = useState([]);
-    const [totalMoney, setTotalMoney] = useState(10000);
+    const [totalMoney, setTotalMoney] = useState(5000);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalTitle, setModalTitle] = useState('');
     const [modalMessage, setModalMessage] = useState('');
@@ -16,11 +16,14 @@ const CartProvider = ({ children }) => {
         setCartItems(prevItems => [...prevItems, item]);
         setCartCount((prevCount) => prevCount + 1);
 
-        // Save product_id and name to local storage
+        
         localStorage.setItem(item.product_id, JSON.stringify({
             id: item.product_id,
             name: item.product_title,
         }));
+    };
+    const updateTotalMoney = (amount) => {
+        setTotalMoney((prev) => prev - amount);
     };
 
     const removeFromCart = (productId) => {
@@ -32,7 +35,7 @@ const CartProvider = ({ children }) => {
         if (!wishlistItems.some(wishlistItem => wishlistItem.product_id === item.product_id)) {
             setWishlistItems(prevItems => [...prevItems, item]);
 
-            // Save product_id and name to local storage
+            
             localStorage.setItem(`wishlist_${item.product_id}`, JSON.stringify({
                 id: item.product_id,
                 name: item.product_title,
@@ -42,7 +45,7 @@ const CartProvider = ({ children }) => {
 
     const removeFromWishlist = (productId) => {
         setWishlistItems(prevItems => prevItems.filter(item => item.product_id !== productId));
-        localStorage.removeItem(`wishlist_${productId}`); // Remove from local storage
+        localStorage.removeItem(`wishlist_${productId}`); 
     };
 
     const sortCartByPrice = () => {
@@ -56,7 +59,7 @@ const CartProvider = ({ children }) => {
         } else if (totalMoney >= totalPrice) {
             const purchasedItems = cartItems.map(item => ({
                 product_id: item.product_id,
-                product_title: item.product_title, // Include the product title
+                product_title: item.product_title, 
             }));
 
             const updatedTotalMoney = totalMoney - totalPrice;
@@ -68,7 +71,7 @@ const CartProvider = ({ children }) => {
             setModalTitle('Purchase Successful');
             setModalMessage(`You spent $${totalPrice.toFixed(2)}.`);
 
-            // Create purchase details including product_id and product_title
+            
             const purchaseDetails = {
                 items: purchasedItems,
                 totalCost: totalPrice,
@@ -99,8 +102,10 @@ const CartProvider = ({ children }) => {
             totalMoney,
             makePurchase,
             setTotalMoney,
+            updateTotalMoney,
             closeModal,
             cartCount
+
         }}>
             {children}
             <Modal isOpen={isModalOpen} onClose={closeModal} title={modalTitle} message={modalMessage} />

@@ -62,7 +62,7 @@ createRoot(document.getElementById('root')).render(
     
     <CartProvider>
       <RouterProvider router={router} />
-     <ToastContainer></ToastContainer>
+     <ToastContainer  position="top-center" theme="light"></ToastContainer>
       
     </CartProvider>
    
