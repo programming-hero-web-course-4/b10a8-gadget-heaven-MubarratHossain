@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { FaShoppingCart, FaStar } from 'react-icons/fa'; // Importing relevant icons
+import { FaShoppingCart, FaStar } from 'react-icons/fa'; 
 
 const Shop = () => {
     const data = useLoaderData();
@@ -13,7 +13,7 @@ const Shop = () => {
             {categories.map((category) => (
                 <div key={category.category_name} className="mb-6">
                     <h4 className="text-2xl font-semibold mb-2 flex items-center">
-                        <FaShoppingCart className="mr-2 text-xl" /> {/* Category icon */}
+                        <FaShoppingCart className="mr-2 text-xl" /> 
                         {category.category_name}
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -28,11 +28,11 @@ const Shop = () => {
                                 <p className="text-gray-700">{item.description}</p>
                                 <p className="text-lg font-semibold mt-2">${item.price}</p>
                                 <p className="text-sm text-gray-500 flex items-center">
-                                    <FaStar className="text-yellow-400 mr-1" /> {/* Rating icon */}
+                                    <FaStar className="text-yellow-400 mr-1" /> 
                                     {item.rating} 
                                 </p>
                                 <button className="mt-4 w-full px-4 py-2 bg-[#9538E2] text-white rounded-full hover:bg-[#7a28a5] transition duration-300 flex items-center justify-center">
-                                    <FaShoppingCart className="mr-2" /> {/* Shopping cart icon */}
+                                    <FaShoppingCart className="mr-2" /> 
                                     Buy Now
                                 </button>
                             </div>

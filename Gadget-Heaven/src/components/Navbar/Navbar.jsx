@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { FaShoppingCart, FaHeart, FaCog } from 'react-icons/fa'; // Importing relevant icons
+import { FaShoppingCart, FaHeart, FaCog } from 'react-icons/fa'; 
 import Banner from '../Banner/Banner';
 import { CartContext } from '../CartProvider/CartProvider';
 
@@ -40,7 +40,7 @@ const Navbar = () => {
 
                 <div className="navbar-center">
                     <span className={`flex items-center text-xl ${isHomePage ? 'text-white' : 'text-black'} mx-auto`}>
-                        <FaCog className="mr-2 h-6 w-6" /> {/* Gadget icon next to the name */}
+                        <FaCog className="mr-2 h-6 w-6" /> 
                         Gadget Heaven
                     </span>
                 </div>
