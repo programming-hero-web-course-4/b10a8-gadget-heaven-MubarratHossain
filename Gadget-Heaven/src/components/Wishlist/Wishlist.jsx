@@ -1,18 +1,22 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../CartProvider/CartProvider';
+import { FaHeart, FaShoppingCart, FaTrash } from 'react-icons/fa'; 
 
 const Wishlist = () => {
     const { wishlistItems, removeFromWishlist, addToCart, cartItems } = useContext(CartContext);
 
     return (
         <div className="p-4">
-            <h3 className="text-2xl mb-4">Your Wishlist</h3>
+            <h3 className="text-2xl mb-4">
+                <FaHeart className="inline-block mr-2 text-red-500" />
+                Your Wishlist
+            </h3>
             <ul className="space-y-4">
                 {wishlistItems.length > 0 ? (
                     wishlistItems.map((item) => {
                         const isInCart = cartItems.some(cartItem => cartItem.product_id === item.product_id);
                         return (
-                            <div key={item.product_id} className=" bg-slate-300 rounded-lg shadow-md p-4 flex items-center justify-between">
+                            <div key={item.product_id} className="bg-slate-300 rounded-lg shadow-md p-4 flex items-center justify-between">
                                 <div className="flex items-center">
                                     <img src={item.product_image} alt={item.product_title} className="w-16 h-16 object-cover mr-4 rounded-md" />
                                     <div>
@@ -27,14 +31,16 @@ const Wishlist = () => {
                                             removeFromWishlist(item.product_id); 
                                         }} 
                                         disabled={isInCart} 
-                                        className={`bg-green-500 text-white py-1 px-2 rounded-md ${isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                        className={`flex items-center bg-green-500 text-white py-1 px-2 rounded-md ${isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
                                     >
+                                        <FaShoppingCart className="mr-1" />
                                         {isInCart ? 'Added to Cart' : 'Add to Cart'}
                                     </button>
                                     <button 
                                         onClick={() => removeFromWishlist(item.product_id)} 
-                                        className="bg-red-500 text-white py-1 px-2 rounded-md"
+                                        className="flex items-center bg-red-500 text-white py-1 px-2 rounded-md"
                                     >
+                                        <FaTrash className="mr-1" />
                                         Remove
                                     </button>
                                 </div>

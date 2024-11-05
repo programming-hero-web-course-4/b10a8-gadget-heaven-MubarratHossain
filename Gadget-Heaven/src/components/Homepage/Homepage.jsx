@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { FaTag, FaCartPlus } from 'react-icons/fa'; // Import relevant icons
 import backgroundImg from './electronic.jpg';
 import Photocard from '../PhotoCard/Photocards';
-
 
 const Homepage = () => {
     const [device, setDevice] = useState([]);
@@ -17,7 +17,7 @@ const Homepage = () => {
     return (
         <div className="flex-grow bg-white p-4">
             <h3 className="text-2xl text-black flex justify-center items-center text-center">
-                {device.length ? `Explore Cutting-Edge Gadgets (${device.length} Categories)` : 'Loading categories...'}
+                {device.length ? `Explore Cutting-Edge Gadgets` : 'Loading categories...'}
             </h3>
 
             <div className="flex flex-col md:flex-row">
@@ -26,15 +26,17 @@ const Homepage = () => {
                     <div className="bg-black bg-opacity-50 absolute inset-0 rounded-lg"></div>
                     <div className="relative flex flex-col items-stretch text-left mt-4 p-4 overflow-auto gap-2">
                         <button
-                            className={`bg-gray-800 ${selectedCategory === null ? 'bg-[#9538E2]' : 'hover:bg-[#9538E2]'} text-white py-2 px-4 rounded-lg mb-2 w-full`}
+                            className={`bg-gray-800 ${selectedCategory === null ? 'bg-[#9538E2]' : 'hover:bg-[#9538E2]'} text-white py-2 px-4 rounded-lg mb-2 w-full flex items-center justify-center`}
                             onClick={() => setSelectedCategory(null)}>
+                            <FaCartPlus className="mr-2" /> 
                             All Products
                         </button>
                         {device.map((category, index) => (
                             <button
                                 key={index}
-                                className={`bg-gray-800 ${selectedCategory === category.category_name ? 'bg-[#9538E2]' : 'bg-[#9538E2] hover:bg-[#9538E2]'} text-white py-2 px-3 rounded-lg mb-2 w-full`}
+                                className={`bg-gray-800 ${selectedCategory === category.category_name ? 'bg-[#9538E2]' : 'hover:bg-[#9538E2]'} text-white py-2 px-3 rounded-lg mb-2 w-full flex items-center justify-center`}
                                 onClick={() => setSelectedCategory(category.category_name)}>
+                                <FaTag className="mr-2" /> 
                                 {category.category_name}
                             </button>
                         ))}
@@ -56,4 +58,3 @@ const Homepage = () => {
 };
 
 export default Homepage;
-

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../CartProvider/CartProvider';
+import { FaShoppingCart, FaSortAmountDown, FaMoneyBillWaveAlt, FaTrash } from 'react-icons/fa'; 
 
 const Cart = () => {
     const { cartItems, removeFromCart, sortCartByPrice, totalMoney, makePurchase } = useContext(CartContext);
@@ -10,20 +11,25 @@ const Cart = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
-            <h3 className="text-2xl mb-4 text-center">Your Cart</h3>
+            <h3 className="text-2xl mb-4 text-center">
+                <FaShoppingCart className="inline-block mr-2" />
+                Your Cart
+            </h3>
             <p className="mb-4 text-center">Here you can review your selected items before proceeding to purchase.</p>
             <div className="flex flex-col md:flex-row justify-between items-center mb-4">
                 <button
                     onClick={sortCartByPrice}
-                    className="bg-[#9538E2] text-white py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-2"
+                    className="flex items-center bg-[#9538E2] text-white py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-2"
                 >
+                    <FaSortAmountDown className="mr-2" />
                     Sort by Price
                 </button>
                 <button
-                    className={`bg-green-500 text-white py-2 px-4 rounded-md ${cartItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`flex items-center bg-green-500 text-white py-2 px-4 rounded-md ${cartItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                     onClick={() => makePurchase(totalPrice)}
                     disabled={cartItems.length === 0} 
                 >
+                    <FaMoneyBillWaveAlt className="mr-2" />
                     Purchase
                 </button>
                 <p className="font-semibold text-lg mt-2 md:mt-0">Total Cost: ${totalPrice.toFixed(2)}</p>
@@ -42,8 +48,9 @@ const Cart = () => {
                             </div>
                             <button
                                 onClick={() => removeFromCart(item.product_id)}
-                                className="bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600 transition duration-200"
+                                className="flex items-center bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600 transition duration-200"
                             >
+                                <FaTrash className="mr-1" /> 
                                 Remove
                             </button>
                         </li>
@@ -57,3 +64,4 @@ const Cart = () => {
 };
 
 export default Cart;
+

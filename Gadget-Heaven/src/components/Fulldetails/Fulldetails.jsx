@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { CartContext } from '../CartProvider/CartProvider';
 import { toast } from 'react-toastify';
-
-import { FaCartPlus, FaHeart } from 'react-icons/fa';
+import { FaCartPlus, FaHeart, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import ReactStars from 'react-rating-stars-component';
 
 const Fulldetails = () => {
     const { id } = useParams();
@@ -16,7 +16,7 @@ const Fulldetails = () => {
         .find(device => device.product_id === parseInt(id));
 
     if (!device) {
-        return <div>Item not found</div>;
+        return <div className="text-center text-xl font-bold">Item not found</div>;
     }
 
     const isInWishlist = wishlistItems.some(item => item.product_id === device.product_id);
@@ -56,28 +56,59 @@ const Fulldetails = () => {
                 icon: false,
                 autoClose: 3000,
                 style: {
-                    backgroundColor: '#ffebf0', 
-                    color: '#333',           
+                    backgroundColor: '#ffebf0',
+                    color: '#333',
                     borderRadius: '8px',
                     padding: '10px 15px',
-                    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', 
+                    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
                 },
             }
         );
     };
 
     return (
-        <div className="p-4 max-w-2xl mx-auto bg-white shadow-lg rounded-lg">
-
+        <div className="p-6 max-w-2xl mx-auto bg-white shadow-lg rounded-lg">
             <img
                 src={device.product_image}
                 alt={device.product_title}
                 className="w-full h-auto rounded-lg mb-4 object-cover"
             />
             <h3 className="text-2xl font-bold mb-2">{device.product_title}</h3>
-            <p className="text-xl font-semibold text-gray-700 mb-4">Price: ${device.price}</p>
+            <p className="text-xl font-semibold text-gray-700 mb-4">Price: <span className="text-[#9538E2]">${device.price}</span></p>
+            <div className="flex items-center mb-4">
+                <span className="mr-2 font-semibold">Rating:</span>
+                <ReactStars
+                    count={5}
+                    value={device.rating}
+                    edit={false}
+                    size={24}
+                    activeColor="#ffd700"
+                />
+            </div>
             <p className="text-gray-600 mb-4">{device.description}</p>
-            <div className="flex space-x-4">
+
+            <h4 className="text-lg font-semibold mb-2">Specifications:</h4>
+            <ul className="list-disc list-inside mb-4">
+                {device.Specification.map((spec, index) => (
+                    <li key={index} className="mb-1">{spec}</li>
+                ))}
+            </ul>
+
+            <p className={`font-semibold flex items-center ${device.availability ? 'text-green-500' : 'text-red-500'}`}>
+                {device.availability ? (
+                    <>
+                        <FaCheckCircle className="mr-1" />
+                        Available
+                    </>
+                ) : (
+                    <>
+                        <FaTimesCircle className="mr-1" />
+                        Out of Stock
+                    </>
+                )}
+            </p>
+
+            <div className="flex space-x-4 mt-4">
                 {isInCart ? (
                     <button
                         disabled
@@ -107,5 +138,6 @@ const Fulldetails = () => {
 };
 
 export default Fulldetails;
+
 
 

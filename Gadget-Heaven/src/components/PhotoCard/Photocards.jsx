@@ -1,11 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaDollarSign } from 'react-icons/fa'; 
 
 const Photocards = ({ item }) => {
     const navigate = useNavigate();
 
     const handleViewDetails = () => {
-        navigate(`/product/${item?.product_id}`); 
+        navigate(`/product/${item?.product_id}`);
     };
 
     return (
@@ -19,12 +20,17 @@ const Photocards = ({ item }) => {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{item?.product_title}</h2>
-                <p className="font-bold">Price: {item?.price}$</p>
+                <p className="font-bold flex items-center">
+                    
+                    Price: {item?.price}
+                    <FaDollarSign className="mr-1" /> 
+                </p>
                 <div className="card-actions justify-end">
                     <button 
-                        className="bg-white border border-[#9538E2] text-[#9538E2] rounded-full py-2 px-4 hover:bg-[#9538E2] hover:text-white focus:ring-2 focus:ring-[#9538E2] focus:outline-none transition-all duration-300"
+                        className="bg-white border border-[#9538E2] text-[#9538E2] rounded-full py-2 px-4 flex items-center hover:bg-[#9538E2] hover:text-white focus:ring-2 focus:ring-[#9538E2] focus:outline-none transition-all duration-300"
                         onClick={handleViewDetails}
                     >
+                        <FaEye className="mr-1" /> 
                         View Details
                     </button>
                 </div>
@@ -34,6 +40,7 @@ const Photocards = ({ item }) => {
 };
 
 export default Photocards;
+
 
 
 

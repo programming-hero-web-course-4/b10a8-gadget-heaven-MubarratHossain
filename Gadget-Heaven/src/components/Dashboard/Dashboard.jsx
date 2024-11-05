@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaShoppingCart, FaHeart } from 'react-icons/fa'; 
 import Cart from '../Cart/Cart';
 import Wishlist from '../Wishlist/Wishlist';
 
@@ -12,20 +13,21 @@ const Dashboard = () => {
 
             <div className="flex gap-4 mt-4 text-white">
                 <button
-                    className={`border-2 py-2 px-6 rounded-lg shadow-md ${activeTab === 'cart' ? 'bg-white text-black' : ''}`}
+                    className={`border-2 py-2 px-6 rounded-lg shadow-md flex items-center ${activeTab === 'cart' ? 'bg-white text-black' : ''}`}
                     onClick={() => setActiveTab('cart')}
                 >
+                    <FaShoppingCart className="mr-2" /> 
                     Cart
                 </button>
                 <button
-                    className={`border-2 py-2 px-6 rounded-lg shadow-md ${activeTab === 'wishlist' ? 'bg-white text-black' : ''}`}
+                    className={`border-2 py-2 px-6 rounded-lg shadow-md flex items-center ${activeTab === 'wishlist' ? 'bg-white text-black' : ''}`}
                     onClick={() => setActiveTab('wishlist')}
                 >
+                    <FaHeart className="mr-2" /> 
                     Wishlist
                 </button>
             </div>
 
-            
             <div className="relative mt-16 w-full max-w-2xl bg-gradient-to-r from-[#D6C4E0] to-[#9538E2] rounded-lg shadow-lg p-4">
                 {activeTab === 'cart' ? <Cart /> : <Wishlist />}
             </div>
