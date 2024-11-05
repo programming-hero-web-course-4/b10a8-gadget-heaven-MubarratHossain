@@ -6,6 +6,13 @@ const Shop = () => {
     const data = useLoaderData();
     const categories = data.categories;
 
+    const handleBuyNow = (productId) => {
+        
+        localStorage.setItem('selectedProductId', productId);
+        
+        alert(`Product with ID: ${productId} has been added to your cart!`);
+    };
+
     return (
         <div className="p-6 max-w-7xl mx-auto">
             <h3 className="text-3xl font-bold mb-4 text-center">Shop List</h3>
@@ -31,7 +38,10 @@ const Shop = () => {
                                     <FaStar className="text-yellow-400 mr-1" /> 
                                     {item.rating} 
                                 </p>
-                                <button className="mt-4 w-full px-4 py-2 bg-[#9538E2] text-white rounded-full hover:bg-[#7a28a5] transition duration-300 flex items-center justify-center">
+                                <button 
+                                    className="mt-4 w-full px-4 py-2 bg-[#9538E2] text-white rounded-full hover:bg-[#7a28a5] transition duration-300 flex items-center justify-center"
+                                    onClick={() => handleBuyNow(item.product_id)} 
+                                >
                                     <FaShoppingCart className="mr-2" /> 
                                     Buy Now
                                 </button>
@@ -45,5 +55,6 @@ const Shop = () => {
 };
 
 export default Shop;
+
 
 
