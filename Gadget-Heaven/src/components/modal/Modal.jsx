@@ -1,15 +1,9 @@
 import React from 'react';
 
 
-
 const Modal = ({ isOpen, onClose, title, message }) => {
-   
-
     // If the modal is not open, return null
     if (!isOpen) return null;
-
-    // Function to handle the Close button
-   
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -17,9 +11,12 @@ const Modal = ({ isOpen, onClose, title, message }) => {
                 <h2 className="text-xl font-bold mb-4">{title}</h2>
                 <p className="mb-4">{message}</p>
                 <div className="flex justify-between">
-                    <button onClick={onClose} className="bg-gray-300 text-black py-2 px-4 rounded-md">
+                    <button 
+                        onClick={onClose} 
+                        className="bg-gray-300 text-black py-2 px-4 rounded-md">
                         Close
                     </button>
+                   
                 </div>
             </div>
         </div>
@@ -27,3 +24,4 @@ const Modal = ({ isOpen, onClose, title, message }) => {
 };
 
 export default Modal;
+

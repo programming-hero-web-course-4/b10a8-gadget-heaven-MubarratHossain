@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { CartContext } from '../CartProvider/CartProvider';
+import { toast } from 'react-toastify';
+
+import { FaCartPlus, FaHeart } from 'react-icons/fa';
 
 const Fulldetails = () => {
     const { id } = useParams();
     const data = useLoaderData();
     const { addToCart, addToWishlist, wishlistItems, cartItems } = useContext(CartContext);
-    const [isCartAdded, setIsCartAdded] = useState(false); 
+    const [isCartAdded, setIsCartAdded] = useState(false);
 
     const device = data.categories
         .flatMap(category => category.items)
@@ -21,11 +24,51 @@ const Fulldetails = () => {
 
     const handleAddToCart = () => {
         addToCart(device);
-        setIsCartAdded(true); 
+        setIsCartAdded(true);
+        toast.success(
+            <div className="flex items-center gap-2">
+                <FaCartPlus className="text-xl text-[#9538E2]" />
+                <span>Added to Cart!</span>
+            </div>,
+            {
+                position: 'top-center',
+                icon: false,
+                autoClose: 3000,
+                style: {
+                    backgroundColor: '#f0f4ff',
+                    color: '#333',
+                    borderRadius: '8px',
+                    padding: '10px 15px'
+                },
+            }
+        );
+    };
+
+    const handleAddToWishlist = () => {
+        addToWishlist(device);
+        toast.info(
+            <div className="flex items-center gap-2">
+                <FaHeart className="text-xl text-[#e63946]" />
+                <span>Your Item Is In Wishlist!</span>
+            </div>,
+            {
+                position: 'top-center',
+                icon: false,
+                autoClose: 3000,
+                style: {
+                    backgroundColor: '#ffebf0', 
+                    color: '#333',           
+                    borderRadius: '8px',
+                    padding: '10px 15px',
+                    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', 
+                },
+            }
+        );
     };
 
     return (
         <div className="p-4 max-w-2xl mx-auto bg-white shadow-lg rounded-lg">
+
             <img
                 src={device.product_image}
                 alt={device.product_title}
@@ -45,14 +88,14 @@ const Fulldetails = () => {
                 ) : (
                     <button
                         onClick={handleAddToCart}
-                        disabled={isCartAdded} 
+                        disabled={isCartAdded}
                         className={`bg-[#9538E2] text-white py-2 px-4 rounded-lg shadow-md ${isCartAdded ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
                         {isCartAdded ? 'Added to Cart' : 'Add to Cart'}
                     </button>
                 )}
                 <button
-                    onClick={() => addToWishlist(device)}
+                    onClick={handleAddToWishlist}
                     disabled={isInWishlist}
                     className={`py-2 px-4 rounded-lg ${isInWishlist ? 'bg-gray-300' : 'bg-white border text-[#9538E2] hover:bg-[#9538E2] hover:text-white'}`}
                 >
@@ -64,3 +107,5 @@ const Fulldetails = () => {
 };
 
 export default Fulldetails;
+
+

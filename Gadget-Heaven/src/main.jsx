@@ -14,6 +14,10 @@ import Fulldetails from './components/Fulldetails/Fulldetails';
 import CartProvider from './components/CartProvider/CartProvider';
 
 import Shop from './Shop/Shop';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const router = createBrowserRouter([
   {
@@ -48,8 +52,10 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     
+    
     <CartProvider>
       <RouterProvider router={router} />
+     <ToastContainer>s</ToastContainer>
       
     </CartProvider>
    
