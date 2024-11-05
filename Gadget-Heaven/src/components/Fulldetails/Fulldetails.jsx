@@ -1,4 +1,3 @@
-
 import React, { useContext, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { CartContext } from '../CartProvider/CartProvider';
@@ -6,8 +5,8 @@ import { CartContext } from '../CartProvider/CartProvider';
 const Fulldetails = () => {
     const { id } = useParams();
     const data = useLoaderData();
-    const { addToCart, addToWishlist, wishlistItems } = useContext(CartContext);
-    const [isCartAdded, setIsCartAdded] = useState(false); // Local state for cart button
+    const { addToCart, addToWishlist, wishlistItems, cartItems } = useContext(CartContext);
+    const [isCartAdded, setIsCartAdded] = useState(false); 
 
     const device = data.categories
         .flatMap(category => category.items)
@@ -18,10 +17,11 @@ const Fulldetails = () => {
     }
 
     const isInWishlist = wishlistItems.some(item => item.product_id === device.product_id);
+    const isInCart = cartItems.some(item => item.product_id === device.product_id);
 
     const handleAddToCart = () => {
         addToCart(device);
-        setIsCartAdded(true); // Disable button after adding to cart
+        setIsCartAdded(true); 
     };
 
     return (
@@ -35,13 +35,22 @@ const Fulldetails = () => {
             <p className="text-xl font-semibold text-gray-700 mb-4">Price: ${device.price}</p>
             <p className="text-gray-600 mb-4">{device.description}</p>
             <div className="flex space-x-4">
-                <button
-                    onClick={handleAddToCart}
-                    disabled={isCartAdded} // Disable if item is added to cart
-                    className={`bg-[#9538E2] text-white py-2 px-4 rounded-lg shadow-md ${isCartAdded ? 'opacity-50 cursor-not-allowed' : ''}`}
-                >
-                    {isCartAdded ? 'Added to Cart' : 'Add to Cart'}
-                </button>
+                {isInCart ? (
+                    <button
+                        disabled
+                        className="bg-green-500 text-white py-2 px-4 rounded-lg shadow-md opacity-50 cursor-not-allowed"
+                    >
+                        Added to Cart
+                    </button>
+                ) : (
+                    <button
+                        onClick={handleAddToCart}
+                        disabled={isCartAdded} 
+                        className={`bg-[#9538E2] text-white py-2 px-4 rounded-lg shadow-md ${isCartAdded ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    >
+                        {isCartAdded ? 'Added to Cart' : 'Add to Cart'}
+                    </button>
+                )}
                 <button
                     onClick={() => addToWishlist(device)}
                     disabled={isInWishlist}

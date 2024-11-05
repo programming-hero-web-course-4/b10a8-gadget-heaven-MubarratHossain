@@ -1,23 +1,29 @@
 import React, { createContext, useState } from 'react';
-import Modal from '../modal/Modal'; // Adjust the import path based on your folder structure
+import Modal from '../modal/Modal';
+ 
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
+    
     const [cartItems, setCartItems] = useState([]);
     const [wishlistItems, setWishlistItems] = useState([]);
-    const [totalMoney, setTotalMoney] = useState(10000); // Set your initial total money
+    const [totalMoney, setTotalMoney] = useState(10000); 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalTitle, setModalTitle] = useState('');
     const [modalMessage, setModalMessage] = useState('');
+    const [cartCount, setCartCount] = useState(0);
+    
 
     const addToCart = (item) => {
-        console.log("Adding item to cart:", item); // Debugging addition
+        
         setCartItems(prevItems => [...prevItems, item]);
+        setCartCount((prevCount) => prevCount +1);
     };
 
     const removeFromCart = (productId) => {
         setCartItems(prevItems => prevItems.filter(item => item.product_id !== productId));
+        setCartCount((prevCount) => prevCount > 0 ? prevCount - 1 : 0);
     };
 
     const addToWishlist = (item) => {
@@ -36,38 +42,42 @@ const CartProvider = ({ children }) => {
 
     const makePurchase = (totalPrice) => {
         if (cartItems.length === 0) {
-            // If the cart is empty
+            
             setModalTitle('Purchase Unavailable');
             setModalMessage("Your cart is empty. Please add items to your cart before making a purchase.");
         } else if (totalMoney >= totalPrice) {
-            const purchasedItems = [...cartItems]; // Store current cart items
-            const updatedTotalMoney = totalMoney - totalPrice; // Calculate remaining money
+            const purchasedItems = [...cartItems]; 
+            const updatedTotalMoney = totalMoney - totalPrice; 
 
-            // Update total money and clear cart
+           
             setTotalMoney(updatedTotalMoney);
-            setCartItems([]); // Clear the cart after purchase
+            setCartItems([]);
+            setCartCount(0); 
 
-            // Set modal content
+           
             setModalTitle('Purchase Successful');
             setModalMessage(`You spent $${totalPrice.toFixed(2)}.`);
 
-            // Store purchase details in local storage
+          
             const purchaseDetails = {
                 items: purchasedItems,
                 totalCost: totalPrice,
                 remainingMoney: updatedTotalMoney,
-                timestamp: new Date().toISOString(), // Store purchase timestamp
+                timestamp: new Date().toISOString(), 
+                
             };
             localStorage.setItem('lastPurchase', JSON.stringify(purchaseDetails));
         } else {
             setModalTitle('Insufficient Funds');
             setModalMessage("You don't have enough funds to complete the purchase.");
         }
-        setIsModalOpen(true); // Show the modal
+        setIsModalOpen(true); 
     };
+    
 
     const closeModal = () => {
-        setIsModalOpen(false); // Close the modal
+        setIsModalOpen(false);
+         
     };
 
     return (
@@ -82,6 +92,8 @@ const CartProvider = ({ children }) => {
             totalMoney,
             makePurchase,
             setTotalMoney,
+            closeModal,
+            cartCount
         }}>
             {children}
             <Modal isOpen={isModalOpen} onClose={closeModal} title={modalTitle} message={modalMessage} />

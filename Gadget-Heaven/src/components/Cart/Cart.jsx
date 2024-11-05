@@ -9,25 +9,27 @@ const Cart = () => {
     const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
 
     return (
-        <div className="p-4">
-            <h3 className="text-2xl mb-4">Your Cart</h3>
-            <p className="mb-4">Here you can review your selected items before proceeding to purchase.</p>
-            <div className="flex justify-between items-center mb-4">
+        <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+            <h3 className="text-2xl mb-4 text-center">Your Cart</h3>
+            <p className="mb-4 text-center">Here you can review your selected items before proceeding to purchase.</p>
+            <div className="flex flex-col md:flex-row justify-between items-center mb-4">
                 <button
                     onClick={sortCartByPrice}
-                    className="bg-[#9538E2] text-white py-2 px-4 rounded-md"
+                    className="bg-[#9538E2] text-white py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-2"
                 >
                     Sort by Price
                 </button>
                 <button
-                    className="bg-green-500 text-white py-2 px-4 rounded-md"
-                    onClick={() => makePurchase(totalPrice)} // Call makePurchase with the total price
+                    className={`bg-green-500 text-white py-2 px-4 rounded-md ${cartItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    onClick={() => makePurchase(totalPrice)}
+                    disabled={cartItems.length === 0} 
                 >
                     Purchase
                 </button>
-                <p className="font-semibold">Total Cost: ${totalPrice.toFixed(2)}</p>
+                <p className="font-semibold text-lg mt-2 md:mt-0">Total Cost: ${totalPrice.toFixed(2)}</p>
             </div>
-            <ul className='bg-slate-300 rounded-lg shadow-md w-full p-4'>
+            <p className="font-semibold text-lg text-center">Available Money: ${totalMoney.toFixed(2)}</p> 
+            <ul className='bg-slate-300 rounded-lg shadow-md w-full p-4 mt-4'>
                 {cartItems.length > 0 ? (
                     cartItems.map((item) => (
                         <li key={item.product_id} className="flex items-center justify-between border-b py-2 last:border-b-0">

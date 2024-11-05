@@ -25,7 +25,7 @@ const Dashboard = () => {
                 </button>
             </div>
 
-            {/* Separate section for the Cart or Wishlist */}
+            
             <div className="relative mt-16 w-full max-w-2xl bg-gradient-to-r from-[#D6C4E0] to-[#9538E2] rounded-lg shadow-lg p-4">
                 {activeTab === 'cart' ? <Cart /> : <Wishlist />}
             </div>
