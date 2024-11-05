@@ -16,6 +16,7 @@ import CartProvider from './components/CartProvider/CartProvider';
 import Shop from './Shop/Shop';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Statistics from './components/Statistics/Statistics';
 
 
 
@@ -40,6 +41,12 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+        path: '/statistic',
+        element: <Statistics></Statistics>,
+        loader:() => fetch('/DeviceData.json')
+      },
+
+      {
         path: '/shop',
         element: <Shop></Shop>,
         loader: () => fetch('/DeviceData.json'),
@@ -55,7 +62,7 @@ createRoot(document.getElementById('root')).render(
     
     <CartProvider>
       <RouterProvider router={router} />
-     <ToastContainer>s</ToastContainer>
+     <ToastContainer></ToastContainer>
       
     </CartProvider>
    

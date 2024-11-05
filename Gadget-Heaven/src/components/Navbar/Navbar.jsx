@@ -32,7 +32,7 @@ const Navbar = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
                             <li><NavLink to="/">Homepage</NavLink></li>
-                            <li><a>Statistics</a></li>
+                            <li><NavLink to='/statistic'>Statistics</NavLink></li>
                             <li><NavLink to="/dashboard">Dashboard</NavLink></li>
                         </ul>
                     </div>
@@ -48,7 +48,7 @@ const Navbar = () => {
                 <div className="navbar-end hidden lg:flex ml-20">
                     <ul className={`menu menu-horizontal p-0 ${isHomePage ? 'text-white' : 'text-black'}`}>
                         <li><NavLink to="/">Homepage</NavLink></li>
-                        <li><a>Statistics</a></li>
+                        <li><NavLink to='/statistic'>Statistics</NavLink></li>
                         <li><NavLink to="/dashboard">Dashboard</NavLink></li>
                     </ul>
                 </div>
