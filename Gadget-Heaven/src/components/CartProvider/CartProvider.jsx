@@ -1,35 +1,44 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
-    const [wishlist, setWishlist] = useState([]);
-
-    useEffect(() => {
-        const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
-        const savedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        setCart(savedCart);
-        setWishlist(savedWishlist);
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    }, [cart, wishlist]);
+    const [cartItems, setCartItems] = useState([]);
+    const [wishlistItems, setWishlistItems] = useState([]);
 
     const addToCart = (item) => {
-        setCart((prevCart) => [...prevCart, item]);
+        console.log("Adding item to cart:", item); // Debugging addition
+        setCartItems(prevItems => [...prevItems, item]);
+    };
+
+    const removeFromCart = (productId) => {
+        setCartItems(prevItems => prevItems.filter(item => item.product_id !== productId));
     };
 
     const addToWishlist = (item) => {
-        if (!wishlist.find((wishItem) => wishItem.product_id === item.product_id)) {
-            setWishlist((prevWishlist) => [...prevWishlist, item]);
+        if (!wishlistItems.some(wishlistItem => wishlistItem.product_id === item.product_id)) {
+            setWishlistItems(prevItems => [...prevItems, item]);
         }
     };
 
+    const removeFromWishlist = (productId) => {
+        setWishlistItems(prevItems => prevItems.filter(item => item.product_id !== productId));
+    };
+
+    const sortCartByPrice = () => {
+        setCartItems(prevItems => [...prevItems].sort((a, b) => b.price - a.price));
+    };
+
     return (
-        <CartContext.Provider value={{ cart, wishlist, addToCart, addToWishlist }}>
+        <CartContext.Provider value={{
+            cartItems,
+            addToCart,
+            removeFromCart,
+            wishlistItems,
+            addToWishlist,
+            removeFromWishlist,
+            sortCartByPrice,
+        }}>
             {children}
         </CartContext.Provider>
     );
