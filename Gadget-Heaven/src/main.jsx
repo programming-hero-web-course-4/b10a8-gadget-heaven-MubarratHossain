@@ -12,7 +12,8 @@ import Homepage from './components/Homepage/Homepage';
 import Dashboard from './components/Dashboard/Dashboard';
 import Fulldetails from './components/Fulldetails/Fulldetails';
 import CartProvider from './components/CartProvider/CartProvider';
-import Modal from './components/modal/Modal';
+
+import Shop from './Shop/Shop';
 
 const router = createBrowserRouter([
   {
@@ -29,9 +30,16 @@ const router = createBrowserRouter([
         element: <Fulldetails />,
         loader: () => fetch('/DeviceData.json'),
       },
+  
       {
         path: 'dashboard',
         element: <Dashboard />,
+      },
+      {
+        path: '/shop',
+        element: <Shop></Shop>,
+        loader: () => fetch('/DeviceData.json'),
+
       },
     ],
   },
