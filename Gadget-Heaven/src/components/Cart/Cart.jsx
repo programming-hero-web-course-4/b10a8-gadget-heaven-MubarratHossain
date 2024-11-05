@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { CartContext } from '../CartProvider/CartProvider';
 
 const Cart = () => {
-    const { cartItems, removeFromCart, sortCartByPrice } = useContext(CartContext);
+    const { cartItems, removeFromCart, sortCartByPrice, totalMoney, makePurchase } = useContext(CartContext);
 
     console.log("Current Cart Items:", cartItems); 
 
@@ -21,8 +21,7 @@ const Cart = () => {
                 </button>
                 <button
                     className="bg-green-500 text-white py-2 px-4 rounded-md"
-                    
-                    onClick={() => alert('Proceeding to purchase')}
+                    onClick={() => makePurchase(totalPrice)} // Call makePurchase with the total price
                 >
                     Purchase
                 </button>
