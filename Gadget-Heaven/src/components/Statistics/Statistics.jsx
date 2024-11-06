@@ -34,7 +34,7 @@ const Statistics = () => {
                 {
                     label: 'Average Price ($)',
                     data: averagePrices,
-                    backgroundColor: 'rgba(128, 0, 128, 0.6)', // Solid purple color
+                    backgroundColor: 'rgba(128, 0, 128, 0.6)',
                     barThickness: 20,
                 }
             ]
