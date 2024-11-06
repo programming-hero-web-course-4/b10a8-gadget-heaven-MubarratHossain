@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { FaShoppingCart, FaHeart, FaCog, FaMoneyBillWave } from 'react-icons/fa'; 
+import { FaShoppingCart, FaHeart, FaCog, FaMoneyBillWave } from 'react-icons/fa';
 import Banner from '../Banner/Banner';
 import { CartContext } from '../CartProvider/CartProvider';
-import { Helmet } from 'react-helmet-async'; 
+import { Helmet } from 'react-helmet-async';
 
 const Navbar = () => {
     const { cartCount, wishlistCount, totalMoney } = useContext(CartContext);
@@ -54,7 +54,7 @@ const Navbar = () => {
 
                     <div className="navbar-center">
                         <span className={`flex items-center text-xl ${isHomePage ? 'text-white' : 'text-black'} mx-auto`}>
-                            <FaCog className="mr-2" /> 
+                            <FaCog className="mr-2" />
                             Gadget Heaven
                         </span>
                     </div>
@@ -97,15 +97,15 @@ const Navbar = () => {
                             <FaMoneyBillWave className="h-4 w-4 text-black" />
                         </button>
 
-                        <button className="btn btn-ghost btn-circle bg-white p-1 relative">
-                            <FaShoppingCart className="h-4 w-4 text-black" />
+                        <button className="btn btn-ghost  md:btn-circle lg:btn-circle bg-white p-1 relative sm:p-2">
+                            <FaShoppingCart className="h-3 w-3 text-black sm:h-3 sm:w-3" />
                             <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 badge badge-sm bg-slate-500 text-white">
                                 {cartCount || ''}
                             </span>
                         </button>
 
-                        <button className="btn btn-ghost btn-circle bg-white relative p-1">
-                            <FaHeart className="h-4 w-4 text-black" />
+                        <button className="btn btn-ghost  md:btn-circle lg:btn-circle bg-white relative p-1 sm:p-2">
+                            <FaHeart className="h-3 w-3 text-black sm:h-3 sm:w-3" />
                             <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 badge badge-sm bg-slate-500 text-white">
                                 {wishlistCount || ''}
                             </span>

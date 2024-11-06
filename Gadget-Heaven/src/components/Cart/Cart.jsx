@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../CartProvider/CartProvider';
 import { FaShoppingCart, FaSortAmountDown, FaMoneyBillWaveAlt, FaTrash, FaCheckCircle } from 'react-icons/fa';
-import { toast } from 'react-toastify'; 
-import 'react-toastify/dist/ReactToastify.css'; 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cart = () => {
     const { cartItems, removeFromCart, sortCartByPrice, totalMoney, makePurchase } = useContext(CartContext);
@@ -13,7 +13,6 @@ const Cart = () => {
     const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
 
     const handlePurchase = () => {
-        
         if (totalPrice > totalMoney) {
             toast.error("You don't have enough money to make this purchase. Please remove items from the cart.");
         } else {
@@ -54,30 +53,32 @@ const Cart = () => {
                 <p className="font-semibold text-lg mt-2 md:mt-0">Total Cost: ${totalPrice.toFixed(2)}</p>
             </div>
 
-            <ul className='bg-slate-300 rounded-lg shadow-lg w-full p-4 mt-4 space-y-4 '>
+            <div className='bg-slate-300 rounded-lg shadow-lg w-full p-4 mt-4 space-y-4'>
                 {cartItems.length > 0 ? (
                     cartItems.map((item) => (
-                        <li key={item.product_id} className="flex items-center justify-between border-b py-2 last:border-b-0">
-                            <div className="flex items-center">
-                                <img src={item.product_image} alt={item.product_title} className="w-16 h-16 object-cover mr-4 rounded-md shadow" />
-                                <div>
+                        <div key={item.product_id} className="flex flex-col sm:flex-row justify-between items-center border-b py-2 last:border-b-0">
+                            <div className="flex flex-col sm:flex-row items-center sm:items-start">
+                                <img src={item.product_image} alt={item.product_title} className="w-16 h-16 object-cover mr-0 sm:mr-4 mb-2 sm:mb-0 rounded-md shadow" />
+                                <div className="text-center sm:text-left">
                                     <h4 className="font-bold text-lg">{item.product_title}</h4>
                                     <p className="text-gray-600">Price: ${item.price.toFixed(2)}</p>
                                 </div>
                             </div>
-                            <button
-                                onClick={() => removeFromCart(item.product_id)}
-                                className="flex items-center bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600 transition duration-200"
-                            >
-                                <FaTrash className="mr-1" />
-                                Remove
-                            </button>
-                        </li>
+                            <div className="mt-2 sm:mt-0">
+                                <button
+                                    onClick={() => removeFromCart(item.product_id)}
+                                    className="flex items-center justify-center w-full sm:w-auto bg-red-500 text-white py-2 px-3 rounded-md hover:bg-red-600 transition duration-200"
+                                >
+                                    <FaTrash className="mr-2 text-lg sm:text-base" /> 
+                                    <span className="text-xs sm:text-sm">Remove</span> 
+                                </button>
+                            </div>
+                        </div>
                     ))
                 ) : (
                     <p className="text-center text-gray-500">Your cart is empty.</p>
                 )}
-            </ul>
+            </div>
 
             {isModalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
