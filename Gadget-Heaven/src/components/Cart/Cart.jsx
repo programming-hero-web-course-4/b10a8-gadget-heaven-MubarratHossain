@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../CartProvider/CartProvider';
 import { FaShoppingCart, FaSortAmountDown, FaMoneyBillWaveAlt, FaTrash, FaCheckCircle } from 'react-icons/fa';
-import { toast } from 'react-toastify'; // Import react-toastify
-import 'react-toastify/dist/ReactToastify.css'; // Import the styles
+import { toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const Cart = () => {
     const { cartItems, removeFromCart, sortCartByPrice, totalMoney, makePurchase } = useContext(CartContext);
