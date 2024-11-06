@@ -82,7 +82,7 @@ const Navbar = () => {
                 </div>
 
                 
-                <div className="navbar-end lg:hidden flex items-center space-x-4">
+                <div className="navbar-end lg:hidden flex items-center space-x-1">
                     
                     <button className="btn btn-ghost btn-circle bg-white p-1 hidden">
                         <FaMoneyBillWave className="h-4 w-4 text-black" />
