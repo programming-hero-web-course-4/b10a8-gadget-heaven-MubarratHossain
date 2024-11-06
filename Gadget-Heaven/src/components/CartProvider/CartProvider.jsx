@@ -7,6 +7,7 @@ const CartProvider = ({ children }) => {
     const [wishlistItems, setWishlistItems] = useState([]);
     const [totalMoney, setTotalMoney] = useState(5000);
     const [cartCount, setCartCount] = useState(0);
+    const [wishlistCount, setWishlistCount] = useState(0); 
 
     const addToCart = (item) => {
         setCartItems(prevItems => [...prevItems, item]);
@@ -30,6 +31,7 @@ const CartProvider = ({ children }) => {
     const addToWishlist = (item) => {
         if (!wishlistItems.some(wishlistItem => wishlistItem.product_id === item.product_id)) {
             setWishlistItems(prevItems => [...prevItems, item]);
+            setWishlistCount(prevCount => prevCount + 1); 
 
             localStorage.setItem(`wishlist_${item.product_id}`, JSON.stringify({
                 id: item.product_id,
@@ -40,6 +42,7 @@ const CartProvider = ({ children }) => {
 
     const removeFromWishlist = (productId) => {
         setWishlistItems(prevItems => prevItems.filter(item => item.product_id !== productId));
+        setWishlistCount(prevCount => (prevCount > 0 ? prevCount - 1 : 0)); 
         localStorage.removeItem(`wishlist_${productId}`);
     };
 
@@ -83,7 +86,8 @@ const CartProvider = ({ children }) => {
             makePurchase,
             setTotalMoney,
             updateTotalMoney,
-            cartCount
+            cartCount,
+            wishlistCount 
         }}>
             {children}
         </CartContext.Provider>
@@ -91,3 +95,4 @@ const CartProvider = ({ children }) => {
 };
 
 export default CartProvider;
+

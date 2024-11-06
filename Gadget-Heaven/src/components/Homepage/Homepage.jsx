@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaTag, FaCartPlus } from 'react-icons/fa'; 
+import { FaTag, FaCartPlus } from 'react-icons/fa';
 import backgroundImg from './electronic.jpg';
 
 import Photocards from '../PhotoCard/Photocards';
@@ -17,10 +17,9 @@ const Homepage = () => {
 
     return (
         <div className="flex-grow bg-white p-4">
-            <h3 className="text-2xl text-black flex justify-center items-center text-center">
+            <h3 className={`text-2xl text-white bg-gradient-to-r from-[#9538E2] to-[#7C29B3] px-6 py-3 rounded-full shadow-md flex justify-center items-center text-center`}>
                 {device.length ? `Explore Cutting-Edge Gadgets` : 'Loading categories...'}
             </h3>
-
             <div className="flex flex-col md:flex-row">
                 <div className="w-full md:w-1/4 h-[500px] border-2 bg-gray-100 shadow-lg mt-4 rounded-lg relative bg-cover bg-center"
                     style={{ backgroundImage: `url(${backgroundImg})` }}>
@@ -29,7 +28,7 @@ const Homepage = () => {
                         <button
                             className={`bg-gray-800 ${selectedCategory === null ? 'bg-[#9538E2]' : 'hover:bg-[#9538E2]'} text-white py-2 px-4 rounded-lg mb-2 w-full flex items-center justify-center`}
                             onClick={() => setSelectedCategory(null)}>
-                            <FaCartPlus className="mr-2" /> 
+                            <FaCartPlus className="mr-2" />
                             All Products
                         </button>
                         {device.map((category, index) => (
@@ -37,7 +36,7 @@ const Homepage = () => {
                                 key={index}
                                 className={`bg-gray-800 ${selectedCategory === category.category_name ? 'bg-[#9538E2]' : 'hover:bg-[#9538E2]'} text-white py-2 px-3 rounded-lg mb-2 w-full flex items-center justify-center`}
                                 onClick={() => setSelectedCategory(category.category_name)}>
-                                <FaTag className="mr-2" /> 
+                                <FaTag className="mr-2" />
                                 {category.category_name}
                             </button>
                         ))}

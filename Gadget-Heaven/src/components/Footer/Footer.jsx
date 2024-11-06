@@ -15,8 +15,8 @@ const Footer = () => {
             <nav className="flex flex-col items-center gap-3">
                 <h6 className="footer-title">Services</h6>
                 <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Design</a>
-                <a className="link link-hover">Marketing</a>
+                <a className="link link-hover">Order Tracking</a>
+                <a className="link link-hover">Shipping and Delivery</a>
                 <a className="link link-hover">Advertisement</a>
             </nav>
             <nav className="flex flex-col items-center gap-3">
@@ -39,8 +39,8 @@ const Footer = () => {
             <nav className="flex flex-col items-center  gap-3">
                 <h6 className="footer-title text-[#9538E2]">Services</h6>
                 <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Design</a>
-                <a className="link link-hover">Marketing</a>
+                <a className="link link-hover">Order Tracking</a>
+                <a className="link link-hover">Shipping and Delivery</a>
                 <a className="link link-hover">Advertisement</a>
             </nav>
             <nav className="flex flex-col items-center  gap-3">

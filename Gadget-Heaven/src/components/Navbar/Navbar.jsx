@@ -4,11 +4,12 @@ import { FaShoppingCart, FaHeart, FaCog, FaMoneyBillWave } from 'react-icons/fa'
 import Banner from '../Banner/Banner';
 import { CartContext } from '../CartProvider/CartProvider';
 import { Helmet } from 'react-helmet-async'; 
+
 const Navbar = () => {
-    const { cartCount, totalMoney } = useContext(CartContext);
+    const { cartCount, wishlistCount, totalMoney } = useContext(CartContext);
     const location = useLocation();
     const isHomePage = location.pathname === '/';
-    const [showMoney, setShowMoney] = useState(false); 
+    const [showMoney, setShowMoney] = useState(false);
 
     const toggleMoneyVisibility = () => {
         setShowMoney(prev => !prev);
@@ -16,7 +17,6 @@ const Navbar = () => {
 
     return (
         <>
-            
             <Helmet>
                 <meta name="description" content="Welcome to Gadget Heaven - Your ultimate online gadget store." />
                 <meta name="keywords" content="gadgets, electronics, shopping, online store" />
@@ -44,7 +44,7 @@ const Navbar = () => {
                             </div>
                             <ul
                                 tabIndex={0}
-                                className="menu menu-sm dropdown-content  rounded-box z-10 mt-3 w-52 p-2 shadow bg-[#9538E2]">
+                                className="menu menu-sm dropdown-content rounded-box z-10 mt-3 w-52 p-2 shadow bg-[#9538E2]">
                                 <li><NavLink to="/">Homepage</NavLink></li>
                                 <li><NavLink to='/statistic'>Statistics</NavLink></li>
                                 <li><NavLink to="/dashboard">Dashboard</NavLink></li>
@@ -79,13 +79,16 @@ const Navbar = () => {
 
                         <button className="btn btn-ghost btn-circle bg-white relative p-1">
                             <FaShoppingCart className="h-4 w-4 text-black" />
-                            <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 badge badge-sm bg-slate-500 text-white">
+                            <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 badge badge-sm bg-black text-white">
                                 {cartCount || ''}
                             </span>
                         </button>
 
-                        <button className="btn btn-ghost btn-circle bg-white p-1">
+                        <button className="btn btn-ghost btn-circle bg-white relative p-1">
                             <FaHeart className="h-4 w-4 text-black" />
+                            <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 badge badge-sm bg-black text-white">
+                                {wishlistCount || ''}
+                            </span>
                         </button>
                     </div>
 
@@ -101,8 +104,11 @@ const Navbar = () => {
                             </span>
                         </button>
 
-                        <button className="btn btn-ghost btn-circle bg-white p-1">
+                        <button className="btn btn-ghost btn-circle bg-white relative p-1">
                             <FaHeart className="h-4 w-4 text-black" />
+                            <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 badge badge-sm bg-slate-500 text-white">
+                                {wishlistCount || ''}
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -114,4 +120,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
