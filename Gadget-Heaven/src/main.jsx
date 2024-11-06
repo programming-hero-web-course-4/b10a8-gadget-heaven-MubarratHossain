@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
+
 import {
   BrowserRouter,
   createBrowserRouter,
@@ -17,7 +18,7 @@ import Shop from './Shop/Shop';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Statistics from './components/Statistics/Statistics';
-
+import { HelmetProvider } from 'react-helmet-async'; 
 
 
 const router = createBrowserRouter([
@@ -35,20 +36,20 @@ const router = createBrowserRouter([
         element: <Fulldetails />,
         loader: () => fetch('/DeviceData.json'),
       },
-  
+
       {
         path: 'dashboard',
         element: <Dashboard />,
       },
       {
         path: '/statistic',
-        element: <Statistics></Statistics>,
+        element: <Statistics />,
         loader:() => fetch('/DeviceData.json')
       },
 
       {
         path: '/shop',
-        element: <Shop></Shop>,
+        element: <Shop />,
         loader: () => fetch('/DeviceData.json'),
 
       },
@@ -59,12 +60,11 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     
-    
-    <CartProvider>
-      <RouterProvider router={router} />
-     <ToastContainer  position="top-center" theme="light"></ToastContainer>
-      
-    </CartProvider>
-   
+    <HelmetProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+        <ToastContainer position="top-center" theme="light" />
+      </CartProvider>
+    </HelmetProvider>
   </StrictMode>,
 );
