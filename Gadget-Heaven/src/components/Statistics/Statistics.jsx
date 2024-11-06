@@ -34,8 +34,8 @@ const Statistics = () => {
                 {
                     label: 'Average Price ($)',
                     data: averagePrices,
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                    barThickness: 20, 
+                    backgroundColor: 'rgba(128, 0, 128, 0.6)', // Solid purple color
+                    barThickness: 20,
                 }
             ]
         });
@@ -47,9 +47,9 @@ const Statistics = () => {
         scales: {
             x: {
                 ticks: {
-                    autoSkip: true, 
-                    maxRotation: 45, 
-                    minRotation: 45, 
+                    autoSkip: true,
+                    maxRotation: 45,
+                    minRotation: 45,
                 }
             },
             y: {
@@ -66,7 +66,7 @@ const Statistics = () => {
         <div style={{ width: '90%', maxWidth: '400px', margin: '0 auto', padding: '10px' }}>
             <h2 style={{ textAlign: 'center', fontSize: '20px' }}>Product Price Statistics</h2>
             {chartData.labels && (
-                <div style={{ height: '300px' }}> 
+                <div style={{ height: '300px' }}>
                     <Bar data={chartData} options={options} />
                 </div>
             )}
@@ -75,5 +75,3 @@ const Statistics = () => {
 };
 
 export default Statistics;
-
-
