@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { FaTag, FaCartPlus } from 'react-icons/fa'; // Import relevant icons
+import { FaTag, FaCartPlus } from 'react-icons/fa'; 
 import backgroundImg from './electronic.jpg';
-import Photocard from '../PhotoCard/Photocards';
+
+import Photocards from '../PhotoCard/Photocards';
 
 const Homepage = () => {
     const [device, setDevice] = useState([]);
@@ -47,7 +48,7 @@ const Homepage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {device.flatMap(category =>
                             (!selectedCategory || category.category_name === selectedCategory)
-                                ? category.items.map(item => <Photocard key={item.product_id} item={item} />)
+                                ? category.items.map(item => <Photocards key={item.product_id} item={item} />)
                                 : []
                         )}
                     </div>

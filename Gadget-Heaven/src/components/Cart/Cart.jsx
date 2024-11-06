@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../CartProvider/CartProvider';
 import { FaShoppingCart, FaSortAmountDown, FaMoneyBillWaveAlt, FaTrash, FaCheckCircle } from 'react-icons/fa';
+import { toast } from 'react-toastify'; // Import react-toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import the styles
 
 const Cart = () => {
     const { cartItems, removeFromCart, sortCartByPrice, totalMoney, makePurchase } = useContext(CartContext);
@@ -11,8 +13,13 @@ const Cart = () => {
     const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
 
     const handlePurchase = () => {
-        makePurchase(totalPrice);
-        setIsModalOpen(true);
+        
+        if (totalPrice > totalMoney) {
+            toast.error("You don't have enough money to make this purchase. Please remove items from the cart.");
+        } else {
+            makePurchase(totalPrice);
+            setIsModalOpen(true);
+        }
     };
 
     const handleCloseModal = () => {
@@ -94,4 +101,5 @@ const Cart = () => {
 };
 
 export default Cart;
+
 
