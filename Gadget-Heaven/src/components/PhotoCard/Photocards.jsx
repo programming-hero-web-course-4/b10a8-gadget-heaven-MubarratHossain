@@ -7,6 +7,12 @@ const Photocards = ({ item }) => {
 
     const handleViewDetails = () => {
         navigate(`/product/${item?.product_id}`);
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,  
+                behavior: 'smooth',
+            });
+        }, 100);
     };
 
     return (
