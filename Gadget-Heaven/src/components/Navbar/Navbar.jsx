@@ -57,7 +57,7 @@ const Navbar = () => {
                         <li><NavLink to="/dashboard">Dashboard</NavLink></li>
                     </ul>
 
-                    {/* Available Money Section */}
+                   
                     <div className="flex items-center">
                         <button onClick={toggleMoneyVisibility} className={`text-lg font-semibold ${isHomePage ? 'text-white' : 'text-black'} flex items-center`}>
                             <FaMoneyBillWave className="mr-1" />

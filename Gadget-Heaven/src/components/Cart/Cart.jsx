@@ -15,7 +15,8 @@ const Cart = () => {
                 <FaShoppingCart className="inline-block mr-2" />
                 Your Cart
             </h3>
-            <p className="mb-4 text-center">Here you can review your selected items before proceeding to purchase.</p>
+            <p className="font-semibold text-lg text-center mb-4">Available Money: ${totalMoney.toFixed(2)}</p>
+            
             <div className="flex flex-col md:flex-row justify-between items-center mb-4">
                 <button
                     onClick={sortCartByPrice}
@@ -34,8 +35,8 @@ const Cart = () => {
                 </button>
                 <p className="font-semibold text-lg mt-2 md:mt-0">Total Cost: ${totalPrice.toFixed(2)}</p>
             </div>
-            <p className="font-semibold text-lg text-center">Available Money: ${totalMoney.toFixed(2)}</p> 
-            <ul className='bg-slate-300 rounded-lg shadow-md w-full p-4 mt-4'>
+            
+            <ul className='bg-slate-300 rounded-lg shadow-lg w-full p-4 mt-4 space-y-4 '> 
                 {cartItems.length > 0 ? (
                     cartItems.map((item) => (
                         <li key={item.product_id} className="flex items-center justify-between border-b py-2 last:border-b-0">
@@ -64,4 +65,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
